@@ -3,7 +3,7 @@
 	<head>
 		<title>Maji Bingo - twitch.tv/majijej</title>
 		<link rel="stylesheet" href="style.css">
-		<link rel="shortcut icon" id="fav" type="image/png" href="majiiBlanket.png"/>
+		<link rel="shortcut icon" id="fav" type="image/png" href=""/>
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
 	</head>
 	
 	<body>
-		<div id="banner"></div>
+		<div id="banner"><img src="logo.png" id="logo" /></div>
 		<div id="bingo">
 			<div id="buttons">
 				<div class="button" onclick="generateSeed()" onmouseenter="showTooltip('Generate New Board')" onmouseleave="noTooltip()">New Board</div>
@@ -40,12 +40,13 @@
 			"Crude adaptation quickly put together by TB"
 			];
 
-			const logos=[ // Yes this could be done automatically, but it's 2AM and I am not in the mood. Might add this later.
-				"<img src=\"logos/awww.png\" />",
-				"<img src=\"logos/blanket.png\" />",
-				"<img src=\"logos/jam.png\" />",
-				"<img src=\"logos/pog.png\" />",
-				"<img src=\"logos/sniff.png\" />"
+			const icons=[ // Yes this could be done automatically, but it's 2AM and I am not in the mood. Might add this later.
+				"majiiAWW.png",
+				"majiiBlanket.png",
+				"majiiPog.png",
+				"majiiXmasSniff.png",
+				"majiiXmasWICKED.png",
+				"majiiJam.gif",
 			];
 			
 			if (!seed) {
@@ -106,7 +107,7 @@
 				}
 				
 				generateFooter();
-				generateBanner();
+				generateIcon();
 			}
 			
 			function generateFooter() {
@@ -115,9 +116,9 @@
 				f.innerHTML+=" • Source code <a href=\"https://github.com/tomasitobambito/majibingo\" target=_blank>on GitHub</a> • Based on <a href=\"https://github.com/GVmG/wirtbingo/tree/main\" target=_blank>Raechel's wirtbingo</a> • Font: <a href=\"https://fonts.google.com/specimen/Balsamiq+Sans\" target=_blank>Balsamiq Sans</a> • Uses <a href=\"https://github.com/davidbau/seedrandom\" target=_blank>seedrandom.js</a> • Now with "+bingos.length+" entries! Submit your suggestions to tomasitobambito#2675 on discord";
 			}
 
-			function generateBanner() {
-				let b=document.getElementById("banner");
-				b.innerHTML=logos[Math.floor(rnd()*logos.length)]
+			function generateIcon() {
+				let i=document.getElementById("fav");
+				i.setAttribute("href", "icons/"+icons[Math.floor(rnd()*icons.length)])
 			}
 		</script>
 	</body>
