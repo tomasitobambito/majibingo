@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>Maji Bingo - twitch.tv/majijej</title>
 		<link rel="stylesheet" href="style.css">
@@ -36,11 +36,13 @@
 			seed=arguments.get("s");
 			
 			const ham=[
-			"Spaghetti code adapted by TB", "A few days of TB's time", "Carefully thrown together by TB", "A little bit of a mess, but that isn't TB's fault", "TB was bored",
-			"Crude adaptation quickly put together by TB"
+				"Spaghetti code adapted by TB", "A few days of TB's time", "Carefully thrown together by TB",
+				"A little bit of a mess, but that isn't TB's fault", "TB was bored",
+				"Crude adaptation quickly put together by TB"
 			];
 
-			const icons=[ // Yes this could be done automatically, but it's 2AM and I am not in the mood. Might add this later.
+			// Yes this could be done automatically, but it's 2AM, and I am not in the mood. Might add this later.
+			const icons=[
 				"majiiAWW.png",
 				"majiiBlanket.png",
 				"majiiPog.png",
@@ -69,7 +71,7 @@
 			}
 			
 			function generateSeed() {
-				seed=(Math.floor(Math.random()*10000000000)).toString(36);
+				let seed=(Math.floor(Math.random()*10000000000)).toString(36);
 				location="?s="+seed; //mmmh yes gimme dat garbage javascript KEKW
 			}
 			
@@ -96,7 +98,7 @@
 				let tr=null;
 				
 				for (let i=0; i<25; i++) {
-					if ((i % 5)==0 || !tr) {
+					if ((i % 5)===0 || !tr) {
 						tr=table.insertRow(-1);
 					}
 					
@@ -112,8 +114,21 @@
 			
 			function generateFooter() {
 				let f=document.getElementById("footer");
-				f.innerHTML=ham[Math.floor(rnd()*ham.length)].replace("TB", "<a href=\"https://github.com/tomasitobambito\" target=_blank>tomasitobambito</a>");
-				f.innerHTML+=" • Source code <a href=\"https://github.com/tomasitobambito/majibingo\" target=_blank>on GitHub</a> • Based on <a href=\"https://github.com/GVmG/wirtbingo/tree/main\" target=_blank>Raechel's wirtbingo</a> • Font: <a href=\"https://fonts.google.com/specimen/Balsamiq+Sans\" target=_blank>Balsamiq Sans</a> • Uses <a href=\"https://github.com/davidbau/seedrandom\" target=_blank>seedrandom.js</a> • Now with "+bingos.length+" entries! Submit your suggestions to tomasitobambito#2675 on discord";
+				f.innerHTML=ham[Math.floor(rnd()*ham.length)].replace(
+						"TB",
+						"<a href=\"https://github.com/tomasitobambito\" target=_blank>tomasitobambito</a>"
+				);
+				f.innerHTML+=
+						"• Source code <a href=\"https://github.com/tomasitobambito/majibingo\" " +
+						"target=_blank>on GitHub</a> " +
+						"• Based on <a href=\"https://github.com/GVmG/wirtbingo/tree/main\" " +
+						"target=_blank>Raechel's wirtbingo</a> " +
+						"• Font: <a href=\"https://fonts.google.com/specimen/Balsamiq+Sans\" " +
+						"target=_blank>Balsamiq Sans</a> " +
+						"• Uses <a href=\"https://github.com/davidbau/seedrandom\" " +
+						"target=_blank>seedrandom.js</a> " +
+						"• Now with "+bingos.length+" entries! " +
+						"Submit your suggestions to tomasitobambito#2675 on discord";
 			}
 
 			function generateIcon() {
