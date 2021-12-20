@@ -2,6 +2,8 @@ body {
 	font-family: 'Balsamiq Sans', cursive;
 	background-color: #1b1b1b;
 	color: #ffffff;
+	cursor: default;
+	user-select: none;
 }
 
 a {
@@ -21,11 +23,12 @@ a:hover {
 	background-color: #9d3c8d;
 	border-radius: 48px;
 	text-align: center;
-	padding-top: 2px; /*Crude fix to get rid of missalignment due to unsupported font. If you use a supported font remove this.*/
+	padding-top: 2px; /*Crude fix to get rid of misalignment due to unsupported font. If you use a supported font remove this.*/
 }
 
 .button:hover {
 	background-color: #c969b4;
+	cursor: pointer;
 }
 
 #slots {
@@ -43,6 +46,7 @@ a:hover {
 .slot:hover {
 	background-color: #c969b4;
 	border-color: #c7a4b9;
+	cursor: pointer;
 }
 
 .checked {
