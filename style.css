@@ -75,7 +75,6 @@ a:hover {
 	height: 160px;
 	border-bottom: 2px solid #f1c9e2;
 	background-color: #1b1b1b;
-	
 	text-align: center;
 }
 
@@ -126,4 +125,5 @@ a:hover {
 #logo {
 	height: 160px;
 	width: auto;
+	cursor: pointer;
 }
