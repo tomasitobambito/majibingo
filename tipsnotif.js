@@ -1,22 +1,22 @@
-tipUpdate=false;
+let tipUpdate=false;
 
 function showTooltip(text) {
 	let tip=document.querySelector(".tooltip");
 	
 	if (tip) {
-		tip.classList.add("visibleTip");
 		tip.innerHTML=text;
 		tipUpdate=true;
 	}
 }
 
 function noTooltip() {
+	tipUpdate=false;
+
 	let tip=document.querySelector(".tooltip");
 	
 	if (tip) {
 		tip.classList.remove("visibleTip");
 	}
-	tipUpdate=false;
 }
 
 function showNotif(text) { //hacky css shenanigans
@@ -39,5 +39,6 @@ document.addEventListener('mousemove', function(e){
 		let tip=document.querySelector(".tooltip");
 		tip.style.transform="translateX("+e.pageX+"px)";
 		tip.style.transform+="translateY("+e.pageY+"px)";
+		tip.classList.add("visibleTip");
 	}
 }, false);
