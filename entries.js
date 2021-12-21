@@ -46,6 +46,8 @@ const bingos=[
     "1000%+ Hypetrain",
     "Someone mentions dirty apartment",
     "Maji mispronounces an english word",
+    "Maji does scenery on stream",
+    "COTM Map is hard even though Maji says it's easy",
 
     // Non-seasonal emotes
     "<img src=\"https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_bcd77a288fa24c90855a34965af39f68/default/light/1.0\" /> Maji Rage",
