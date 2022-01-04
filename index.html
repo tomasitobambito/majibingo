@@ -1,137 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Maji Bingo - twitch.tv/majijej</title>
-		<link rel="stylesheet" href="style.css">
-		<link rel="shortcut icon" id="fav" type="image/png" href=""/>
-		
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet"> 
-		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
-		<script type="text/javascript" src="./entries.js"></script>
-		<script type="text/javascript" src="notif.js"></script>
-		
-		<meta charset="utf-8"/>
-	</head>
-	
-	<body>
-		<div id="banner"><img src="logo.png" id="logo" onclick="generateSeed()"/></div>
-		<div id="buttons">
-			<div class="button" onclick="generateSeed()">New Board</div>
-			<div class="button" onclick="shareSeed()">Share Board</div>
-		</div><br>
-		<div id="bingo">
-			
-			<div id="slotsContainer">
-				<table id="slots"></table>
-			</div>
-		</div>
-		<div id="footer"></div>
-		<div id="notif"></div>
-		
-		<div class="tooltip"></div>
-		
-		<script>
-			let arguments=new URLSearchParams(window.location.search);
-			seed=arguments.get("s");
-			
-			const ham=[
-				"Spaghetti code adapted by TB", "A few days of TB's time", "Carefully thrown together by TB",
-				"A little bit of a mess, but that isn't TB's fault", "TB was bored",
-				"Crude adaptation quickly put together by TB"
-			];
+<head>
+	<title>Maji Bingo - twitch.tv/majijej</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" id="fav" type="image/png" href=""/>
 
-			// Yes this could be done automatically, but it's 2AM, and I am not in the mood. Might add this later.
-			// turns out doing this automatically is very pain inducing, and I will not be trying it.
-			const icons=[
-				"majiiAWW.png",
-				"majiiBlanket.png",
-				"majiiKing.png",
-				"majiiPog.png",
-				"majiiSniff.png",
-				"majiiWICKED.png",
-				"majiiWTF.png",
-				"majiiJam.gif",
-			];
-			
-			if (!seed) {
-				generateSeed();
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+	<script type="text/javascript" src="./entries.js"></script>
+	<script type="text/javascript" src="notif.js"></script>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div id="banner"><img src="logo.png" id="logo" onclick="generateSeed()"/></div>
+<div id="buttons">
+	<div class="button" onclick="generateSeed()">New Board</div>
+	<div class="button" onclick="shareSeed()">Share Board</div>
+</div><br>
+<div id="bingo">
+
+	<div id="slotsContainer">
+		<table id="slots"></table>
+	</div>
+</div>
+<div id="footer"></div>
+<div id="notif"></div>
+
+<div class="tooltip"></div>
+
+<script>
+	let arguments=new URLSearchParams(window.location.search);
+	seed=arguments.get("s");
+
+	const ham=[
+		"Spaghetti code adapted by TB", "A few days of TB's time", "Carefully thrown together by TB",
+		"A little bit of a mess, but that isn't TB's fault", "TB was bored",
+		"Crude adaptation quickly put together by TB"
+	];
+
+	// Yes this could be done automatically, but it's 2AM, and I am not in the mood. Might add this later.
+	// turns out doing this automatically is very pain inducing, and I will not be trying it.
+	const icons=[
+		"majiiAWW.png",
+		"majiiBlanket.png",
+		"majiiKing.png",
+		"majiiPog.png",
+		"majiiSniff.png",
+		"majiiWICKED.png",
+		"majiiWTF.png",
+		"majiiJam.gif",
+	];
+
+	if (!seed) {
+		generateSeed();
+	}
+
+	rnd=new Math.seedrandom(seed);
+
+	generateBoard();
+
+	/////////////////////////////////////////////////////////////
+
+	function generateSeed() {
+		let seed=(Math.floor(Math.random()*10000000000)).toString(36);
+		location="?s="+seed; //mmmh yes gimme dat garbage javascript KEKW
+	}
+
+	function shareSeed() {
+		navigator.clipboard.writeText(location.href);
+		showNotif("Copied to clipboard! You can paste<br>the link wherever you want to share it.");
+	}
+
+	function slotCheck(e) {
+		e.classList.toggle("checked");
+	}
+
+	function generateBoard() {
+		let chosen=[];
+
+		while (chosen.length<25) {
+			let pick=bingos[Math.floor(rnd()*bingos.length)];
+			if (!chosen.includes(pick)) {
+				chosen.push(pick);
 			}
-			
-			rnd=new Math.seedrandom(seed);
-			
-			generateBoard();
-			
-			/////////////////////////////////////////////////////////////
-		
-			function generateSeed() {
-				let seed=(Math.floor(Math.random()*10000000000)).toString(36);
-				location="?s="+seed; //mmmh yes gimme dat garbage javascript KEKW
-			}
-			
-			function shareSeed() {
-				navigator.clipboard.writeText(location.href);
-				showNotif("Copied to clipboard! You can paste<br>the link wherever you want to share it.");
-			}
-			
-			function slotCheck(e) {
-				e.classList.toggle("checked");
-			}
-			
-			function generateBoard() {
-				let chosen=[];
-				
-				while (chosen.length<25) {
-					let pick=bingos[Math.floor(rnd()*bingos.length)];
-					if (!chosen.includes(pick)) {
-						chosen.push(pick);
-					}
-				}
-				
-				let table=document.getElementById("slots");
-				let tr=null;
-				
-				for (let i=0; i<25; i++) {
-					if ((i % 5)===0 || !tr) {
-						tr=table.insertRow(-1);
-					}
-					
-					let c=tr.insertCell();
-					c.innerHTML=chosen[i];
-					c.classList.add("slot");
-					c.onclick=function () {slotCheck(c);};
-				}
-				
-				generateFooter();
-				generateIcon();
-			}
-			
-			function generateFooter() {
-				let f=document.getElementById("footer");
-				f.innerHTML=ham[Math.floor(rnd()*ham.length)].replace(
-						"TB",
-						"<a href=\"https://github.com/tomasitobambito\" target=_blank>tomasitobambito</a>"
-				);
-				f.innerHTML+=
-						"• Source code <a href=\"https://github.com/tomasitobambito/majibingo\" " +
-						"target=_blank>on GitHub</a> " +
-						"• Based on <a href=\"https://github.com/GVmG/wirtbingo/tree/main\" " +
-						"target=_blank>Raechel's wirtbingo</a> " +
-						"• Font: <a href=\"https://fonts.google.com/specimen/Balsamiq+Sans\" " +
-						"target=_blank>Balsamiq Sans</a> " +
-						"• Uses <a href=\"https://github.com/davidbau/seedrandom\" " +
-						"target=_blank>seedrandom.js</a> " +
-						"• Now with "+bingos.length+" entries! " +
-						"Submit your suggestions on discord to " +
-						"<a href=\"https://discordapp.com/users/603943912763031567\">tomasitobambito</a>";
+		}
+
+		let table=document.getElementById("slots");
+		let tr=null;
+
+		for (let i=0; i<25; i++) {
+			if ((i % 5)===0 || !tr) {
+				tr=table.insertRow(-1);
 			}
 
-			function generateIcon() {
-				let i=document.getElementById("fav");
-				i.setAttribute("href", "icons/"+icons[Math.floor(rnd()*icons.length)])
-			}
-		</script>
-	</body>
+			let c=tr.insertCell();
+			c.innerHTML=chosen[i];
+			c.classList.add("slot");
+			c.onclick=function () {slotCheck(c);};
+		}
+
+		generateFooter();
+		generateIcon();
+	}
+
+	function generateFooter() {
+		let f=document.getElementById("footer");
+		f.innerHTML=ham[Math.floor(rnd()*ham.length)].replace(
+				"TB",
+				"<a href=\"https://github.com/tomasitobambito\" target=_blank>tomasitobambito</a>"
+		);
+		f.innerHTML+=
+				"• Source code <a href=\"https://github.com/tomasitobambito/majibingo\" " +
+				"target=_blank>on GitHub</a> " +
+				"• Based on <a href=\"https://github.com/GVmG/wirtbingo/tree/main\" " +
+				"target=_blank>Raechel's wirtbingo</a> " +
+				"• Font: <a href=\"https://fonts.google.com/specimen/Balsamiq+Sans\" " +
+				"target=_blank>Balsamiq Sans</a> " +
+				"• Uses <a href=\"https://github.com/davidbau/seedrandom\" " +
+				"target=_blank>seedrandom.js</a> " +
+				"• Now with "+bingos.length+" entries! Submit your suggestions on discord to " +
+				"<a href=\"https://discordapp.com/users/603943912763031567\">tomasitobambito</a>";
+	}
+
+	function generateIcon() {
+		let i=document.getElementById("fav");
+		i.setAttribute("href", "icons/"+icons[Math.floor(rnd()*icons.length)])
+	}
+</script>
+</body>
 </html>
