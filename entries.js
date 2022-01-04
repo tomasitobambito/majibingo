@@ -68,7 +68,5 @@ const bingos=[
     "<img src=\"https://cdn.frankerfacez.com/emoticon/457124/1\" /> WICKED",
     "<img src=\"https://cdn.frankerfacez.com/emoticon/332541/1\" /> Chat riots",
     "Chat is <img src=\"https://cdn.frankerfacez.com/emoticon/243789/1\" />",
-
-    // Seasonal emotes
-    "<img src=\"https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_19cc0f6103d94ea0b0bb27ab270cf991/default/light/1.0\" /> Maji says something sus (Free Space)"
+    "<img src=\"https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_2da2e694a607467e8da0f382dd86f227/static/light/1.0\" /> Maji says something sus (Free Space)"
 ];
