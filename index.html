@@ -18,13 +18,15 @@
 	
 	<body>
 		<div id="banner"><img src="logo.png" id="logo" onclick="generateSeed()"/></div>
+		<div id="buttons">
+			<div class="button" onclick="generateSeed()">New Board</div>
+			<div class="button" onclick="shareSeed()">Share Board</div>
+		</div><br>
 		<div id="bingo">
-			<div id="buttons">
-				<div class="button" onclick="generateSeed()">New Board</div>
-				<div class="button" onclick="shareSeed()">Share Board</div>
-			</div><br>
 			
-			<table id="slots"></table>
+			<div id="slotsContainer">
+				<table id="slots"></table>
+			</div>
 		</div>
 		<div id="footer"></div>
 		<div id="notif"></div>
@@ -62,17 +64,8 @@
 			
 			generateBoard();
 			
-			window.addEventListener("resize", resize);
-			resize();
-			
 			/////////////////////////////////////////////////////////////
-			
-			function resize() { //god bless stackoverflow -> Amen
-				let scale=(window.innerHeight-170)/900;
-				let b=document.getElementById("bingo");
-				b.style.transform="scale("+scale+")";
-			}
-			
+		
 			function generateSeed() {
 				let seed=(Math.floor(Math.random()*10000000000)).toString(36);
 				location="?s="+seed; //mmmh yes gimme dat garbage javascript KEKW
