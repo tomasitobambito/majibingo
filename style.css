@@ -4,6 +4,13 @@ body {
 	color: #ffffff;
 	cursor: default;
 	user-select: none;
+	margin: 0px;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-content: stretch;
+	height: 100vh;
+	justify-content: space-between;
 }
 
 a {
@@ -16,8 +23,12 @@ a:hover {
 }
 
 .button {
-	display: inline-block;
-	width: 250px;
+	display: flex;
+	max-width: 300px;
+	width: 40%;
+	height: 5vh;
+	justify-content: center;
+	align-items: center;
 	font-size: 32px;
 	color: #ffffff;
 	background-color: #9d3c8d;
@@ -33,12 +44,19 @@ a:hover {
 
 #slots {
 	text-align: center;
-	display: inline;
+	display: flex;
+}
+
+#slotsContainer {
+	display: flex;
+	width: max-content;
+	align-self: center;
+	margin: auto;
 }
 
 .slot {
-	width: 140px;
-	height: 140px;
+	width: 13vh;
+	height: 13vh;
 	border: 1px solid transparent;
 	background-color: #2b2b2b;
 }
@@ -56,40 +74,51 @@ a:hover {
 #buttons {
 	text-align: center;
 	padding-top: 12px; /*Crude alignment fix, feel free to remove / replace with better code lol*/
+	display: flex;
+    flex-direction: row;
+    flex: 0 1 auto;
+	width: inherit;
+    justify-content: center;
+    align-self: center;
 }
 
 #bingo {
-	position: fixed;
-	left: 10px;
-	right: 10px;
-	top: 170px;
 	text-align: center;
-	transform-origin: center top;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	justify-content: stretch;
+	overflow: scroll;
+}
+
+#bingo::-webkit-scrollbar {
+	display: none;
 }
 
 #banner {
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 0;
-	height: 160px;
 	border-bottom: 2px solid #f1c9e2;
 	background-color: #1b1b1b;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #footer {
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
 	font-size: 16px;
 	border-top: 2px solid #f1c9e2;
 	background-color: #1b1b1b;
 	text-align: center;
-	/*More Crude padding. This is bad practice, you shouldn't use px, but I'm tired*/
-	padding-top: 6px; 
-	padding-bottom: 2px;
+	display: flex;
+	flex-flow: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#footer a {
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 #notif {
