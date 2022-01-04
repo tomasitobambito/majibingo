@@ -58,6 +58,7 @@ const bingos=[
     "<img src=\"https://cdn.betterttv.net/emote/617706061f8ff7628e6afb02/1x\" /> Streamer doesn't know",
     "<img src=\"https://cdn.betterttv.net/emote/612464ddaf28e9568649ca10/1x\" /> Gears",
     "<img src=\"https://cdn.betterttv.net/emote/59143b496996b360ff9b807c/1x\" /> Opens canned drink",
+    "<img src=\"https://cdn.betterttv.net/emote/613fcbf8686f1c747a860c4e/1x\" /> Stream starts late",
     "Chat spams <img src=\"https://cdn.betterttv.net/emote/60cd2cfb8ed8b373e4216130/1x\" />",
     "Chat spams <img src=\"https://cdn.betterttv.net/emote/61942e5e54f3344f8805f103/1x\" />",
     "Maji's Map is <img src=\"https://cdn.betterttv.net/emote/611ace7e76ea4e2b9f779ad3/1x\" />",
