@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<title>Maji Bingo - twitch.tv/majijej</title>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="newStyle.css">
 		<link rel="shortcut icon" id="fav" type="image/png" href=""/>
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,7 @@
 		<script type="text/javascript" src="notif.js"></script>
 		
 		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	</head>
 	
 	<body>
@@ -23,15 +24,10 @@
 			<div class="button" onclick="shareSeed()">Share Board</div>
 		</div><br>
 		<div id="bingo">
-			
-			<div id="slotsContainer">
-				<table id="slots"></table>
-			</div>
+			<table id="slots"></table>
 		</div>
 		<div id="footer"></div>
 		<div id="notif"></div>
-		
-		<div class="tooltip"></div>
 		
 		<script>
 			let arguments=new URLSearchParams(window.location.search);
@@ -63,17 +59,40 @@
 			rnd=new Math.seedrandom(seed);
 			
 			generateBoard();
-			
-			/////////////////////////////////////////////////////////////
+
+			watchForHover();
+
+			function watchForHover() { // https://stackoverflow.com/questions/23885255/how-to-remove-ignore-hover-css-style-on-touch-devices thank you stackoverflow
+				let lastTouchTime = 0;
+
+				function enableHover() {
+					if (new Date() - lastTouchTime < 500) return;
+					document.body.classList.add('hasHover');
+				}
+
+				function disableHover() {
+					document.body.classList.remove('hasHover');
+				}
+
+				function updateLastTouchTime() {
+					lastTouchTime = new Date();
+				}
+
+				document.addEventListener('touchstart', updateLastTouchTime, true);
+				document.addEventListener('touchstart', disableHover, true);
+				document.addEventListener('mousemove', enableHover, true);
+
+				enableHover();
+			}
 		
 			function generateSeed() {
 				let seed=(Math.floor(Math.random()*10000000000)).toString(36);
-				location="?s="+seed; //mmmh yes gimme dat garbage javascript KEKW
+				location="?s="+seed;
 			}
 			
 			function shareSeed() {
 				navigator.clipboard.writeText(location.href);
-				showNotif("Copied to clipboard! You can paste<br>the link wherever you want to share it.");
+				showNotif("Copied to clipboard!");
 			}
 			
 			function slotCheck(e) {

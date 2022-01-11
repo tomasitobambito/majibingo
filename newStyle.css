@@ -1,0 +1,100 @@
+body {
+    font-family: 'Balsamiq Sans', cursive;
+    background-color: #1b1b1b;
+    color: #ffffff;
+    cursor: default;
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+    color: #f1c9e2;
+}
+
+body.hasHover a:hover {
+    color: #eb98cb;
+}
+
+#buttons {
+    display: block;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.button {
+    display: inline-block;
+    background-color: #9d3c8d;
+    border-radius: 30px;
+    font-size: 1.5em;
+    width: 45vw;
+}
+
+body.hasHover .button:hover {
+    background-color: #c969b4;
+    cursor: pointer;
+}
+
+#bingo {
+    text-align: center;
+    overflow: scroll;
+    height: 55vh;
+}
+
+.slot {
+    border: 1px solid transparent;
+    width: 18vw;
+    height: 1vw;
+    font-size: 1.5em;
+    background-color: #2b2b2b;
+}
+
+#slots {
+    margin: auto;
+    width: 100%;
+}
+
+body.hasHover .slot:hover {
+    background-color: #c969b4;
+    border-color: #c7a4b9;
+    cursor: pointer;
+}
+
+.checked {
+    background-color: #a58a9b !important;
+}
+
+#banner {
+    border-bottom: 2px solid #f1c9e2;
+    background-color: #1b1b1b;
+    text-align: center;
+}
+
+#logo {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 50em;
+}
+
+#footer {
+    border-top: 2px solid #f1c9e2;
+    background-color: #1b1b1b;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    font-size: 0.9em;
+}
+
+#notif {
+    background-color: #9d3c8d;
+    display: none;
+    width: 30vw;
+    position: absolute;
+    transition: opacity 5s;
+    pointer-events: none;
+    font-size: 2em;
+    text-align: center;
+    padding: 10px;
+    border-radius: 12px;
+    top: 20px;
+    left: 20px
+}
